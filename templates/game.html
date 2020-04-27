@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="static/board.css">
+{% endblock %}
+
+{% block body %}
+    <div id="game-board">
+        <div id="dealer" class="card-slot"></div>
+        <div id="deck"></div>
+        <div id="player" class="card-slot"></div>
+    </div>
+{% endblock %}
