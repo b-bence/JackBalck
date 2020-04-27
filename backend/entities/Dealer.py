@@ -1,4 +1,5 @@
 from backend.entities import Entity
+from backend import Deck
 
 
 class Dealer(metaclass=Entity):
