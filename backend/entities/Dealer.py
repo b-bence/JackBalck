@@ -2,16 +2,15 @@ from backend.entities import Entity
 from backend import Deck
 
 
-class Dealer(metaclass=Entity):
+class Dealer():
 
     def __init__(self):
         pass
 
     def turn(self):
-        print(self.hand)
         pass
 
-    def deal(self, player):
+    def deal(self):
         pass
 
     def hit(self):

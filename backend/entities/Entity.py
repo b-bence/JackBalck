@@ -1,8 +1,7 @@
-
-
 class Entity():
-    hand = [1, 23]
-    busted = False
+
+    def __init__(self):
+        pass
 
     def hit(self):
         pass
