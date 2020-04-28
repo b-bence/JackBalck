@@ -19,17 +19,8 @@ function selectFirstDisk() {
 
 function removeListener() {
     disks.forEach(disk => {
-        disk.removeEventListener('dragstart', event => {
-            event.dataTransfer.clearData();
-
+        disk.removeEventListener('dragstart', dragStart)
         });
-
-        disk.addEventListener('dragstart', event => {
-            console.log('dragstart');
-            console.log(event.target)
-            event.dataTransfer.setData('text', event.target.id);
-        });
-    });
 }
 
 
@@ -49,7 +40,6 @@ dropZones.forEach(dropZone => {
 
     dropZone.addEventListener('dragover', event => {
         event.preventDefault();
-        // console.log('dragover')
     });
 
     dropZone.addEventListener('drop', event => {
