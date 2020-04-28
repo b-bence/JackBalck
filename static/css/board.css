@@ -58,3 +58,15 @@
 .disk:hover {
     opacity: .7;
 }
+
+.counter{
+    justify-content: center;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#counter{
+    margin-left: 10px;
+}

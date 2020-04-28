@@ -10,7 +10,7 @@
     <div id="game-board">
         {% for i in range(3) %}
 
-            <div class="tower">
+            <div class="tower" data="{{ i }}">
                 {% if i == 0 %}
                     {% for j in range(disk_count) %}
                         <div class="disk" draggable="true" id="div{{ j }}"
@@ -19,5 +19,16 @@
                 {% endif %}
             </div>
         {% endfor %}
+    </div>
+
+    <div class="counter">
+        <div>
+            <label for="counter">Step Counter:</label>
+        </div>
+
+        <div>
+            <p id="counter">0</p>
+        </div>
+
     </div>
 {% endblock %}

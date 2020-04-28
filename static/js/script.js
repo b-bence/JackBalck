@@ -20,7 +20,7 @@ function selectFirstDisk() {
 function removeListener() {
     disks.forEach(disk => {
         disk.removeEventListener('dragstart', dragStart)
-        });
+    });
 }
 
 
@@ -45,14 +45,20 @@ dropZones.forEach(dropZone => {
     dropZone.addEventListener('drop', event => {
         event.preventDefault();
         let data = event.dataTransfer.getData("text");
-        event.dataTransfer.clearData("text");
         let list = event.target;
-        if (event.target.getAttribute('class') === 'tower')
+
+        event.dataTransfer.clearData("text");
+
+        if (event.target.getAttribute('class') === 'tower') {
             list.insertBefore(document.getElementById(data), list.childNodes[0]);
-        console.log(list.childNodes);
+            let counter = document.getElementById('counter');
+            counter.innerHTML = parseInt(counter.innerHTML) + 1;
+            console.log(event.target)
+        }
+
+        // console.log(list.childNodes);
         removeListener();
         selectFirstDisk();
-        addListener()
-
+        addListener();
     });
 });
