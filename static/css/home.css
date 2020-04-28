@@ -1,0 +1,26 @@
+#submit-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+input[type=number] {
+    margin-left: 24px;
+    color: black;
+    background-color: #d6d6d6;
+    width: 3%;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+div{
+    padding-bottom: 25px;
+}

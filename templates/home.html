@@ -1,15 +1,16 @@
 {% extends 'layout.html' %}
 
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="static/board.css">
+    <link rel="stylesheet" type="text/css" href="static/css/home.css">
 {% endblock %}
 
 {% block body %}
+    <h1>Hanoi Tower</h1>
     <div id="form-settings-div">
         <form id="form" method="POST">
             <div id="disk-count-div">
-                <label for="disk-count">Disk number:</label>
-                <input name="disk-count" type="number" min="3" max="5">
+                <label for="disk-count">Disc number:</label>
+                <input name="disk-count" type="number" min="3" max="6" value="3">
             </div>
 
             <div id="submit-button-div">

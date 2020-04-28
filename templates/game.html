@@ -6,14 +6,15 @@
 {% endblock %}
 
 {% block body %}
-    <h1 style=": center;">Hanoi Tower</h1>
+    <h1>Hanoi Tower</h1>
     <div id="game-board">
-        {% for i in range(tower_count) %}
+        {% for i in range(3) %}
+
             <div class="tower">
                 {% if i == 0 %}
                     {% for j in range(disk_count) %}
                         <div class="disk" draggable="true" id="div{{ j }}"
-                             style="margin: 1px {{ (disk_count - j) * 10 }}%"></div>
+                             style="margin: 1px {{ (disk_count - j) * 7 }}%"></div>
                     {% endfor %}
                 {% endif %}
             </div>

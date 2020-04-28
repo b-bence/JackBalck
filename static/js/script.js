@@ -26,6 +26,10 @@ function removeListener (){
         //     disk.classList.remove('dragstart');
         // });
 
+    disk.addEventListener('dragstart', event => {
+        console.log('dragstart');
+        console.log(event.target)
+        event.dataTransfer.setData('text', event.target.id);
     });
 }
 
@@ -50,16 +54,24 @@ dropZones.forEach(dropZone => {
         // console.log('dragover')
     });
 
-
     dropZone.addEventListener('drop', event => {
         event.preventDefault();
         let data = event.dataTransfer.getData("text");
         event.dataTransfer.clearData("text");
         let list = event.target;
+        // console.log(event.target.childNodes[1])
+        if (event.target.getAttribute())
         list.insertBefore(document.getElementById(data), list.childNodes[0]);
         console.log(list.childNodes);
         removeListener();
         selectFirstDisk();
         addListener()
+        try {
+
+        }
+        catch (e) {
+            console.log(e.stackTrace);
+        }
+        console.log(list.childNodes[0].getAttribute('id'));
     });
 });
