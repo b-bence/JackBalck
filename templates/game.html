@@ -2,20 +2,6 @@
 
 {% block head %}
     <link rel="stylesheet" type="text/css" href="static/css/board.css">
-{% endblock %}
-
-{% block body %}
-    <h1>GAME</h1>
-    <div id="game-board">
-
-        <div class="tower">
-            <div class="drop-zone"></div>
-            <div class="fill"></div>
-            <div class="disk"></div>
-            <div class="disk"></div>{% extends 'layout.html' %}
-
-{% block head %}
-    <link rel="stylesheet" type="text/css" href="static/css/board.css">
     <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 {% endblock %}
 
@@ -32,21 +18,5 @@
                 {% endif %}
             </div>
         {% endfor %}
-    </div>
-{% endblock %}
-            <div class="disk"></div>
-            <div class="disk"></div>
-            <div class="disk"></div>
-        </div>
-
-        <div class="tower">
-            <div class="drop-zone"></div>
-            <div class="fill"></div>
-        </div>
-
-        <div class="tower">
-            <div class="drop-zone"></div>
-            <div class="fill"></div>
-        </div>
     </div>
 {% endblock %}
