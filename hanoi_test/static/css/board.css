@@ -1,0 +1,48 @@
+#game-board{
+    height: 500px;
+    width: 750px;
+    margin: 0 auto;
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    border: black solid 3px;
+
+}
+
+.tower{
+    margin: 50px 10px;
+    height: 75px;
+    width: 75px;
+    background: url('/static/img/tower.png');
+    background-size:cover;
+}
+
+.container{
+    border: 1px solid black;
+    height: 100%;
+    width: 33.33%;
+    display:flex;
+    align-items: flex-end;
+}
+
+.disk{
+    height: 20px;
+    border: 1px solid red;
+    border-radius: 10px;
+    background-color: orange;
+}
+
+.droppable{
+    border: 1px solid blue;
+    width: 100%;
+    padding-top: 30px;
+}
+
+.drop_div{
+    height: 20px;
+}
+
+.test{
+    border: 1px solid orange;
+}

@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="static/board.css">
+{% endblock %}
+
+{% block body %}
+    <div id="form-settings-div">
+        <form id="form" method="POST">
+            <div id="player-count-div">
+                <label for="player-count">Disk number:</label>
+                <input name="player-count" type="number" min="0" max="3">
+            </div>
+
+            <div id="submit-button-div">
+                <button id="submit-button" value="Submit" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
