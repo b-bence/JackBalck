@@ -1,32 +1,38 @@
-let disks = document.querySelectorAll('.disk');
-let dropZones = document.querySelectorAll('.tower');
+let disks = document.querySelectorAll('disk')
+let dropZones = document.querySelectorAll('drop-zone')
 
 disks.forEach(disk => {
 
     disk.addEventListener('dragstart', event => {
-        console.log('dragstart');
-        event.dataTransfer.setData('text', event.target.id);
+        dropZones.forEach(disk => {
+            disk.classList.add('selected');
+        });
     });
 
-    // disk.addEventListener('dragend', event => {
-    //     disk.classList.remove('dragstart');
-    // });
-
-});
-
-dropZones.forEach(dropZone => {
-
-    dropZone.addEventListener('dragover', event => {
-        event.preventDefault();
-        console.log('dragover')
+    disk.addEventListener('dragend', event => {
+        dropZones.forEach(disk => {
+            disk.classList.remove('selected');
+        });
     });
 
 
-    dropZone.addEventListener('drop', event => {
+    disk.addEventListener('dragenter', event => {
+        dropZones.forEach(dropZone => {
+            dropZone.classList.add('enter');
+        });
+    });
+
+    disk.addEventListener('dragleave', event => {
+        dropZones.forEach(dropZone => {
+            dropZone.classList.add('leave');
+        });
+    });
+
+    disk.addEventListener('drop', event => {
         event.preventDefault();
-        let data = event.dataTransfer.getData("text");
-        let list = event.target;
-        list.insertBefore(document.getElementById(data), list.childNodes[0]);
-        console.log(list.childNodes);
+        if (event.target !== disk.parentNode && event.target !== disk) {
+            disk.parentNode.removeChild(disk);
+            event.target.appendChild(disk);
+        }
     });
 });

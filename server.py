@@ -6,15 +6,16 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def home():
     if request.method == 'POST':
-        disk_count = request.form['disk-count']
-        print('disk count: ' + disk_count)
+        # print('in post')
+        player_count = request.form['player-count']
+        print(player_count)
         return redirect('/game')
     return render_template('home.html')
 
 
 @app.route('/game')
 def game():
-    return render_template('game.html', disk_count=3, tower_count=3)
+    return render_template('game.html')
 
 
 if __name__ == '__main__':

@@ -1,8 +1,8 @@
-#game-board {
+#game-board{
     height: 500px;
     width: 750px;
     margin: 0 auto;
-    display: flex;
+    display:flex;
     flex-direction: row;
     justify-content: center;
     align-items: flex-end;
@@ -10,58 +10,31 @@
 
 }
 
-/*.tower {*/
-/*    margin: 50px 10px;*/
-/*    height: 75px;*/
-/*    width: 75px;*/
-/*    background: url('/static/img/tower.png');*/
-/*    background-size: cover;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    justify-content: flex-end;*/
-/*    align-items: center;*/
-/*}*/
-
-.tower {
-    border: 1px solid black;
-    height: 100%;
-    width: 33.33%;
+.tower{
+    margin: 50px 10px;
+    height: 75px;
+    width: 75px;
+    background: url('/static/img/tower.png');
+    background-size:cover;
     display: flex;
-    justify-content: flex-end;
     flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-/*.disk {*/
-/*    height: 5px;*/
-/*    width: 20px;*/
-/*    border: black solid 2px;*/
-/*    background: yellow;*/
-/*}*/
-
-.disk {
-    height: 10px;
-    border: 1px solid red;
-    border-radius: 10px;
-    background-color: orange;
-}
-
-/*.drop-zone {*/
-/*    height: 40px;*/
-/*    width: 40px;*/
-/*}*/
-
-.fill {
-    background: blue;
-    flex: 1;
-}
-
-.square {
-    height: 10px;
-    width: 40px;
-    border: black solid 1px;
+.disk{
+    height:5px;
+    width: 20px;
+    border: black solid 2px;
     background: yellow;
 }
 
-.disk:hover {
-    opacity: .7;
+.drop-zone{
+    height:15px;
+    width: 40px;
+}
+
+.fill{
+    background: blue;
+    flex:1;
 }
