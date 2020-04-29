@@ -26,6 +26,7 @@ function removeListener() {
 function addListener() {
     disks.forEach(disk => {
         disk.addEventListener('dragstart', dragStart);
+        disk.addEventListener('dragend', dragEnd);
     });
 }
 
@@ -34,6 +35,12 @@ function dragStart(event) {
     event.dataTransfer.setData('text', event.target.id);
     lastDisk = event.dataTransfer.getData("text");
 }
+
+
+function dragEnd(event){
+    checkWin();
+}
+
 
 
 dropZones.forEach(dropZone => {
@@ -48,11 +55,11 @@ dropZones.forEach(dropZone => {
         let list = event.target;
         let sameDisk;
 
-        sameDisk = list.children[0] === document.getElementById(data) ;
+        sameDisk = list.children[0] === document.getElementById(data);
 
         if (event.target.getAttribute('class') === 'tower' && !sameDisk) {
             try {
-                if (event.target.childNodes.length === 1){
+                if (event.target.childNodes.length === 1) {
                     list.insertBefore(document.getElementById(data), list.childNodes[0]);
                     let counter = document.getElementById('counter');
                     counter.innerHTML = parseInt(counter.innerHTML) + 1;
@@ -70,8 +77,8 @@ dropZones.forEach(dropZone => {
                                     if (firstTowerDiskSize > currentDisk && firstTowerDiskSize) {
                                         list.insertBefore(document.getElementById(data), list.childNodes[0]);
                                         counter();
-                                    break labelLoop;
                                     }
+                                    break labelLoop;
                                 }
                             } catch (e) {
                                 if (firstTowerDiskSize === undefined) {
@@ -83,16 +90,13 @@ dropZones.forEach(dropZone => {
                         }
                 }
             } catch (e) {
-                console.log('Something went wrong!')
+                console.log('Something went wrong!');
             }
-            checkWin();
+
             removeListener();
             selectFirstDisk();
             addListener();
-
         }
-
-
     });
 });
 
@@ -103,8 +107,8 @@ function counter() {
 }
 
 
-function checkWin(){
-    if (dropZones[2].children.length === totalNumberOfDisks.length){
-        alert('Congrats! You won the game')
+function checkWin() {
+    if (dropZones[2].children.length === totalNumberOfDisks.length) {
+        alert('Congrats! You won the game');
     }
 }
