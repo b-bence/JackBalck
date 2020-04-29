@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+{#    <link rel="stylesheet" type="text/css" href="static/css/prezi.css">#}
+    <link rel="stylesheet" type="text/css" href="static/css/board.css">
+    <script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  let data = ev.dataTransfer.getData("text");
+  let list = ev.target
+  list.insertBefore(document.getElementById(data), list.childNodes[0]);
+}
+</script>
+{% endblock %}
+
+{% block body %}
+    <h1>Pros & Cons</h1>
+    <div style="width: 20%; height: 30px; float: left; margin-left:20%">Pros</div>
+    <div style="width: 20%; height: 30px; float: left;"></div>
+    <div style="width: 20%; height: 30px; float: left;">Cons</div>
+    <div id="game-board">
+        {% for i in range(3) %}
+            <div id="a{{ i }}" class="tower" data="{{ i }}" ondrop="drop(event)" ondragover="allowDrop(event)">
+                {% if i == 1 %}
+                    {% for j in range(pros_cons|length) %}
+                        <div class="disk" draggable="true" id="div{{ j }}" style="padding: 5px" ondragstart="drag(event)">
+                            {{ pros_cons[j] }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div><br>
+    <a href="{{ url_for('home') }}" id="submit-button">Home</a>
+{% endblock %}

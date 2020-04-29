@@ -12,9 +12,17 @@
     -webkit-box-shadow: inset 0 0 10px #000000;
     box-shadow: inset 0 0 10px #000000;
     color: black;
+    box-sizing: border-box;
 
 }
 
+.tower:first-child{
+    border-radius: 5px 0 0 5px;
+}
+
+.tower:last-child{
+    border-radius: 0 5px 5px 0;
+}
 
 .tower {
     border: 1px solid black;
@@ -69,4 +77,15 @@
 
 #counter{
     margin-left: 10px;
+}
+
+#submit-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 26px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 6px;
 }

@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="static/css/prezi.css">
+{% endblock %}
+
+{% block body %}
+    <h1>Weekly progress</h1>
+    <div id="game-board">
+        <div id="m" class="days"><h3>Monday:</h3><b>- review, repo, planning</b></div><br>
+        <div id="t" class="days"><h3>Tuesday:</h3><b>- coding, semi finished</b></div><br>
+        <div id="w" class="days"><h3>Wednesday:</h3><b>- refactor, debug, presentation</b></div><br>
+        <div id="thu" class="days"><h3>Thursday:</h3><b>- demo, relax</b></div><br>
+        <div id="f" class="days"><h3>Friday:</h3><b>- Call of Duty: Warzone</b></div>
+    </div><br>
+    <a href="{{ url_for('pros_and_cons') }}" id="submit-button">Next</a>
+{% endblock %}
+
+{#jó:#}
+{#kommunikáció#}
+{#teamwork#}
+{##}
+{#nehéz:#}
+{#játékválasztás#}
+{#feladatelosztás#}
+{#új technológia használata#}
+{##}
+
+
+{#h: rewiev, repo, planning#}
+{#k: coding half done#}
+{#sz: refaktor ,debug#}

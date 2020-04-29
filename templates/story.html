@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="static/css/prezi.css">
+{% endblock %}
+
+{% block body %}
+    <h1>Hanoi Tower</h1>
+    <div id="game-board">
+        <div id="story">The Tower of Hanoi is a mathematical game or puzzle. It consists of three rods and a number of disks of different sizes, which can slide onto any rod. The puzzle starts with the disks in a neat stack in ascending order of size on one rod, the smallest at the top, thus making a conical shape.
+            The objective of the puzzle is to move the entire stack to another rod, obeying the following simple rules:</div><br>
+        <div class="rules" id="rule1">Only one disk can be moved at a time.</div><br>
+        <div class="rules" id="rule2">Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.</div><br>
+        <div class="rules" id="rule3">No larger disk may be placed on top of a smaller disk.</div>
+    </div><br>
+    <a href="{{ url_for('week') }}" id="submit-button">Next</a>
+{% endblock %}
+
+{#jó:#}
+{#kommunikáció#}
+{#teamwork#}
+{##}
+{#nehéz:#}
+{#játékválasztás#}
+{#feladatelosztás#}
+{#új technológia használata#}
+{##}
+{#h: rewiev, repo, planning#}
+{#k: coding half done#}
+{#sz: refaktor ,debug#}
