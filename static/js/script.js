@@ -58,15 +58,15 @@ dropZones.forEach(dropZone => {
                     counter.innerHTML = parseInt(counter.innerHTML) + 1;
                 }
                 else {
-                    let currentDisk = parseInt(data.split('')[data.length - 1])
+                    let currentDisk = parseInt(data.split('')[data.length - 1]);
                     let firstTowerDiskSize;
 
                     labelLoop:
                         for (let node of event.target.childNodes) {
                             try {
                                 if (node.hasAttribute('draggable')) {
-                                    firstTowerDiskSize = parseInt(node.getAttribute('index'))
-                                    console.log(firstTowerDiskSize)
+                                    firstTowerDiskSize = parseInt(node.getAttribute('index'));
+                                    console.log(firstTowerDiskSize);
                                     if (firstTowerDiskSize > currentDisk && firstTowerDiskSize) {
                                         list.insertBefore(document.getElementById(data), list.childNodes[0]);
                                         counter();
@@ -76,7 +76,7 @@ dropZones.forEach(dropZone => {
                             } catch (e) {
                                 if (firstTowerDiskSize === undefined) {
                                     list.insertBefore(document.getElementById(data), list.childNodes[0]);
-                                    counter()
+                                    counter();
                                     break labelLoop;
                                 }
                             }
@@ -85,19 +85,14 @@ dropZones.forEach(dropZone => {
             } catch (e) {
                 console.log('Something went wrong!')
             }
+            checkWin();
+            removeListener();
+            selectFirstDisk();
+            addListener();
 
         }
-        if (dropZones[2].children.length === totalNumberOfDisks.length){
-            if (checkWin()){
-                console.log('gg')
-            }
-            else{
-                console.log('not gg')
-            }
-        }
-        removeListener();
-        selectFirstDisk();
-        addListener();
+
+
     });
 });
 
@@ -109,15 +104,7 @@ function counter() {
 
 
 function checkWin(){
-    let counter = 0;
-    for (let i = 0; i < dropZones[2].children.length-1; i++){
-        if (dropZones[2].children[i].getAttribute('index') <
-            dropZones[2].children[i+1].getAttribute('index')){
-            counter ++
-        }
-    }
-    console.log(counter);
-    if (counter ===  dropZones[2].children.length){
-        return true
+    if (dropZones[2].children.length === totalNumberOfDisks.length){
+        alert('Congrats! You won the game')
     }
 }
