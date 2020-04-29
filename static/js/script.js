@@ -72,6 +72,7 @@ dropZones.forEach(dropZone => {
                                         counter();
                                     break labelLoop;
                                     }
+
                                 }
                             } catch (e) {
                                 if (firstTowerDiskSize === undefined) {
