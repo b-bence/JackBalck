@@ -51,21 +51,25 @@ dropZones.forEach(dropZone => {
 
         if (event.target.getAttribute('class') === 'tower' && !sameDisk) {
             try {
-                if (event.target.childNodes.length === 1)
+                if (event.target.childNodes.length === 1){
                     list.insertBefore(document.getElementById(data), list.childNodes[0]);
+                    let counter = document.getElementById('counter');
+                    counter.innerHTML = parseInt(counter.innerHTML) + 1;
+                }
                 else {
                     let towerIndex = parseInt(event.target.getAttribute('data'))
                     let towerDisk = parseInt(disks[towerIndex].getAttribute('index'))
                     let currentDisk = data.split('')[data.length - 1]
-                    if (currentDisk < towerDisk)
+                    if (currentDisk < towerDisk){
                         list.insertBefore(document.getElementById(data), list.childNodes[0]);
+                        let counter = document.getElementById('counter');
+                        counter.innerHTML = parseInt(counter.innerHTML) + 1;
+                    }
                 }
             } catch (e) {
                 console.log('Something went wrong!')
             }
 
-            let counter = document.getElementById('counter');
-            counter.innerHTML = parseInt(counter.innerHTML) + 1;
         }
         removeListener();
         selectFirstDisk();
