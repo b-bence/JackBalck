@@ -56,28 +56,32 @@ dropZones.forEach(dropZone => {
                 // console.log(event.target.childNodes)
                 if (event.target.childNodes.length === 1) {
                     list.insertBefore(document.getElementById(data), list.childNodes[0]);
-                    let counter = document.getElementById('counter');
-                    counter.innerHTML = parseInt(counter.innerHTML) + 1;
+                    counter()
                 }
                 else {
                     let currentDisk = parseInt(data.split('')[data.length - 1])
                     let firstTowerDiskSize;
 
                     labelLoop:
-                    for (let node of event.target.childNodes) {
-                        try {
-                            if (node.hasAttribute('draggable')) {
-                                firstTowerDiskSize = parseInt(node.getAttribute('index'))
-                                console.log(firstTowerDiskSize)
-                                if (firstTowerDiskSize > currentDisk && firstTowerDiskSize)
+                        for (let node of event.target.childNodes) {
+                            try {
+                                if (node.hasAttribute('draggable')) {
+                                    firstTowerDiskSize = parseInt(node.getAttribute('index'))
+                                    console.log(firstTowerDiskSize)
+                                    if (firstTowerDiskSize > currentDisk && firstTowerDiskSize) {
+                                        list.insertBefore(document.getElementById(data), list.childNodes[0]);
+                                        counter()
+                                    }
+                                    break labelLoop;
+                                }
+                            } catch (e) {
+                                if (firstTowerDiskSize === undefined) {
                                     list.insertBefore(document.getElementById(data), list.childNodes[0]);
-                                break labelLoop;
+                                    counter()
+                                    break labelLoop;
+                                }
                             }
-                        } catch (e) {
-                            if (firstTowerDiskSize === undefined)
-                                list.insertBefore(document.getElementById(data), list.childNodes[0]);
                         }
-                    }
                 }
             } catch (e) {
                 console.log('Something went wrong!')
@@ -89,3 +93,9 @@ dropZones.forEach(dropZone => {
         addListener();
     });
 });
+
+
+function counter() {
+    let counter = document.getElementById('counter');
+    counter.innerHTML = parseInt(counter.innerHTML) + 1;
+}
