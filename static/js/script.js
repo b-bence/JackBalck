@@ -46,6 +46,7 @@ dropZones.forEach(dropZone => {
         let data = event.dataTransfer.getData("text");
         let list = event.target;
         let sameDisk;
+        // console.log(dropZones[0].children[0])
 
         sameDisk = list.children[0] === document.getElementById(data) ;
 
@@ -57,9 +58,11 @@ dropZones.forEach(dropZone => {
                     counter.innerHTML = parseInt(counter.innerHTML) + 1;
                 }
                 else {
-                    let towerIndex = parseInt(event.target.getAttribute('data'))
-                    let towerDisk = parseInt(disks[towerIndex].getAttribute('index'))
-                    let currentDisk = data.split('')[data.length - 1]
+                    let towerIndex = parseInt(event.target.getAttribute('data'));
+
+                    let towerDisk = parseInt(disks[towerIndex].getAttribute('index'));
+                    let currentDisk = data.split('')[data.length - 1];
+
                     if (currentDisk < towerDisk){
                         list.insertBefore(document.getElementById(data), list.childNodes[0]);
                         let counter = document.getElementById('counter');
@@ -71,8 +74,33 @@ dropZones.forEach(dropZone => {
             }
 
         }
+        if (dropZones[2].children.length === 1){
+            if (checkWin()){
+                // console.log('gg')
+            }
+            else{
+                // console.log('not gg')
+            }
+        }
+        console.log('Initial disks: ' + disks)
         removeListener();
         selectFirstDisk();
+        console.log("After drop: " + disks)
         addListener();
+
     });
 });
+
+function checkWin(){
+    let counter = 0;
+    for (let i = 0; i < dropZones[2].children.length-1; i++){
+        if (dropZones[2].children[i].getAttribute('index') <
+            dropZones[2].children[i+1].getAttribute('index')){
+            counter ++
+        }
+    }
+    console.log(counter)
+    if (counter ===  dropZones[2].children.length){
+        return true
+    }
+}
