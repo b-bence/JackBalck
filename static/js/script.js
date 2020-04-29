@@ -1,3 +1,4 @@
+const totalNumberOfDisks = document.querySelectorAll('.disk');
 let disks = [];
 let dropZones = document.querySelectorAll('.tower');
 selectFirstDisk();
@@ -46,7 +47,6 @@ dropZones.forEach(dropZone => {
         let data = event.dataTransfer.getData("text");
         let list = event.target;
         let sameDisk;
-        // console.log(dropZones[0].children[0])
 
         sameDisk = list.children[0] === document.getElementById(data) ;
 
@@ -74,18 +74,16 @@ dropZones.forEach(dropZone => {
             }
 
         }
-        if (dropZones[2].children.length === 1){
+        if (dropZones[2].children.length === totalNumberOfDisks.length){
             if (checkWin()){
-                // console.log('gg')
+                console.log('gg')
             }
             else{
-                // console.log('not gg')
+                console.log('not gg')
             }
         }
-        console.log('Initial disks: ' + disks)
         removeListener();
         selectFirstDisk();
-        console.log("After drop: " + disks)
         addListener();
 
     });
@@ -99,7 +97,7 @@ function checkWin(){
             counter ++
         }
     }
-    console.log(counter)
+    console.log(counter);
     if (counter ===  dropZones[2].children.length){
         return true
     }
