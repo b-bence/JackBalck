@@ -19,7 +19,7 @@
 .tower {
     border: 1px solid black;
     height: 100%;
-    width: 33.33%;
+    width: 250px;
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
@@ -27,7 +27,7 @@
 
 
 .disk {
-    height: 10px;
+    height: 15px;
     border: 1px solid black;
     border-radius: 10px;
 }
