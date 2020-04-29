@@ -1,7 +1,5 @@
-// let disks = document.querySelectorAll('.disk');
 let disks = [];
 let dropZones = document.querySelectorAll('.tower');
-
 selectFirstDisk();
 addListener();
 
@@ -48,7 +46,8 @@ dropZones.forEach(dropZone => {
         let data = event.dataTransfer.getData("text");
         let list = event.target;
         let sameDisk;
-        sameDisk = list.firstChild === document.getElementById(data);
+
+        sameDisk = list.children[0] === document.getElementById(data) ;
 
         if (event.target.getAttribute('class') === 'tower' && !sameDisk) {
             list.insertBefore(document.getElementById(data), list.childNodes[0]);
