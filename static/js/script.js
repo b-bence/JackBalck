@@ -1,3 +1,4 @@
+const totalNumberOfDisks = document.querySelectorAll('.disk');
 let disks = [];
 let dropZones = document.querySelectorAll('.tower');
 selectFirstDisk();
@@ -43,20 +44,18 @@ dropZones.forEach(dropZone => {
 
     dropZone.addEventListener('drop', event => {
         event.preventDefault();
-
         let data = event.dataTransfer.getData("text");
         let list = event.target;
         let sameDisk;
 
-
-        sameDisk = list.children[0] === document.getElementById(data);
+        sameDisk = list.children[0] === document.getElementById(data) ;
 
         if (event.target.getAttribute('class') === 'tower' && !sameDisk) {
             try {
-                // console.log(event.target.childNodes)
-                if (event.target.childNodes.length === 1) {
+                if (event.target.childNodes.length === 1){
                     list.insertBefore(document.getElementById(data), list.childNodes[0]);
-                    counter()
+                    let counter = document.getElementById('counter');
+                    counter.innerHTML = parseInt(counter.innerHTML) + 1;
                 }
                 else {
                     let currentDisk = parseInt(data.split('')[data.length - 1])
@@ -86,8 +85,16 @@ dropZones.forEach(dropZone => {
             } catch (e) {
                 console.log('Something went wrong!')
             }
+
         }
-        console.log('----------');
+        if (dropZones[2].children.length === totalNumberOfDisks.length){
+            if (checkWin()){
+                console.log('gg')
+            }
+            else{
+                console.log('not gg')
+            }
+        }
         removeListener();
         selectFirstDisk();
         addListener();
@@ -98,4 +105,19 @@ dropZones.forEach(dropZone => {
 function counter() {
     let counter = document.getElementById('counter');
     counter.innerHTML = parseInt(counter.innerHTML) + 1;
+}
+
+
+function checkWin(){
+    let counter = 0;
+    for (let i = 0; i < dropZones[2].children.length-1; i++){
+        if (dropZones[2].children[i].getAttribute('index') <
+            dropZones[2].children[i+1].getAttribute('index')){
+            counter ++
+        }
+    }
+    console.log(counter);
+    if (counter ===  dropZones[2].children.length){
+        return true
+    }
 }
