@@ -1,7 +1,6 @@
-// let disks = document.querySelectorAll('.disk');
+const totalNumberOfDisks = document.querySelectorAll('.disk');
 let disks = [];
 let dropZones = document.querySelectorAll('.tower');
-
 selectFirstDisk();
 addListener();
 
@@ -27,6 +26,7 @@ function removeListener() {
 function addListener() {
     disks.forEach(disk => {
         disk.addEventListener('dragstart', dragStart);
+        disk.addEventListener('dragend', dragEnd);
     });
 }
 
@@ -34,6 +34,11 @@ function addListener() {
 function dragStart(event) {
     event.dataTransfer.setData('text', event.target.id);
     lastDisk = event.dataTransfer.getData("text");
+}
+
+
+function dragEnd(event) {
+    checkWin();
 }
 
 
@@ -48,15 +53,61 @@ dropZones.forEach(dropZone => {
         let data = event.dataTransfer.getData("text");
         let list = event.target;
         let sameDisk;
-        sameDisk = list.firstChild === document.getElementById(data);
+
+        sameDisk = list.children[0] === document.getElementById(data);
 
         if (event.target.getAttribute('class') === 'tower' && !sameDisk) {
-            list.insertBefore(document.getElementById(data), list.childNodes[0]);
-            let counter = document.getElementById('counter');
-            counter.innerHTML = parseInt(counter.innerHTML) + 1;
+            try {
+                if (event.target.childNodes.length === 1) {
+                    list.insertBefore(document.getElementById(data), list.childNodes[0]);
+                    let counter = document.getElementById('counter');
+                    counter.innerHTML = parseInt(counter.innerHTML) + 1;
+                }
+                else {
+                    let currentDisk = parseInt(data.split('')[data.length - 1]);
+                    let firstTowerDiskSize;
+
+                    labelLoop:
+                        for (let node of event.target.childNodes) {
+                            try {
+                                if (node.hasAttribute('draggable')) {
+                                    firstTowerDiskSize = parseInt(node.getAttribute('index'));
+                                    console.log(firstTowerDiskSize);
+                                    if (firstTowerDiskSize > currentDisk && firstTowerDiskSize) {
+                                        list.insertBefore(document.getElementById(data), list.childNodes[0]);
+                                        counter();
+                                    }
+                                    break labelLoop;
+                                }
+                            } catch (e) {
+                                if (firstTowerDiskSize === undefined) {
+                                    list.insertBefore(document.getElementById(data), list.childNodes[0]);
+                                    counter();
+                                    break labelLoop;
+                                }
+                            }
+                        }
+                }
+            } catch (e) {
+                console.log('Something went wrong!');
+            }
+
+            removeListener();
+            selectFirstDisk();
+            addListener();
         }
-        removeListener();
-        selectFirstDisk();
-        addListener();
     });
 });
+
+
+function counter() {
+    let counter = document.getElementById('counter');
+    counter.innerHTML = parseInt(counter.innerHTML) + 1;
+}
+
+
+function checkWin() {
+    if (dropZones[2].children.length === totalNumberOfDisks.length) {
+        alert('Congrats! You won the game');
+    }
+}
