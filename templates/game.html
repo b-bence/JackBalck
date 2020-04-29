@@ -13,7 +13,7 @@
             <div class="tower" data="{{ i }}">
                 {% if i == 0 %}
                     {% for j in range(disk_count) %}
-                        <div class="disk" draggable="true" id="div{{ j }}"
+                        <div class="disk" draggable="true" id="div{{ j }}" index="{{ j }}"
                              style="margin: 1px {{ 40 - j * 8 }}%"></div>
                     {% endfor %}
                 {% endif %}
