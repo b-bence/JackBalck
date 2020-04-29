@@ -70,9 +70,9 @@ dropZones.forEach(dropZone => {
                                     console.log(firstTowerDiskSize)
                                     if (firstTowerDiskSize > currentDisk && firstTowerDiskSize) {
                                         list.insertBefore(document.getElementById(data), list.childNodes[0]);
-                                        counter()
-                                    }
+                                        counter();
                                     break labelLoop;
+                                    }
                                 }
                             } catch (e) {
                                 if (firstTowerDiskSize === undefined) {
