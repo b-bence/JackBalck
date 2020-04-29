@@ -50,13 +50,10 @@ dropZones.forEach(dropZone => {
         let sameDisk;
         sameDisk = list.firstChild === document.getElementById(data);
 
-        if (event.target.getAttribute('class') === 'tower') {
-
+        if (event.target.getAttribute('class') === 'tower' && !sameDisk) {
             list.insertBefore(document.getElementById(data), list.childNodes[0]);
-            if (!sameDisk){
-                let counter = document.getElementById('counter');
-                counter.innerHTML = parseInt(counter.innerHTML) + 1;
-            }
+            let counter = document.getElementById('counter');
+            counter.innerHTML = parseInt(counter.innerHTML) + 1;
         }
         removeListener();
         selectFirstDisk();
