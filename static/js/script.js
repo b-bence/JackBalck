@@ -33,6 +33,7 @@ function addListener() {
 
 function dragStart(event) {
     event.dataTransfer.setData('text', event.target.id);
+    lastDisk = event.dataTransfer.getData("text");
 }
 
 
@@ -46,17 +47,17 @@ dropZones.forEach(dropZone => {
         event.preventDefault();
         let data = event.dataTransfer.getData("text");
         let list = event.target;
-
-        event.dataTransfer.clearData("text");
+        let sameDisk;
+        sameDisk = list.firstChild === document.getElementById(data);
 
         if (event.target.getAttribute('class') === 'tower') {
-            list.insertBefore(document.getElementById(data), list.childNodes[0]);
-            let counter = document.getElementById('counter');
-            counter.innerHTML = parseInt(counter.innerHTML) + 1;
-            console.log(event.target)
-        }
 
-        // console.log(list.childNodes);
+            list.insertBefore(document.getElementById(data), list.childNodes[0]);
+            if (!sameDisk){
+                let counter = document.getElementById('counter');
+                counter.innerHTML = parseInt(counter.innerHTML) + 1;
+            }
+        }
         removeListener();
         selectFirstDisk();
         addListener();
