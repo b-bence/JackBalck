@@ -109,5 +109,6 @@ function counter() {
 function checkWin() {
     if (dropZones[2].children.length === totalNumberOfDisks.length) {
         alert('Congrats! You won the game');
+        window.location.pathname = '/';
     }
 }
